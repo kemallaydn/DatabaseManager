@@ -10,6 +10,8 @@ import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
+
+import java.sql.Connection;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
@@ -28,9 +30,6 @@ public class ServiceFacade {
     private IBaseDao baseDao=null;
 
     private ManagerService managerService = null;
-
-
-    Properties appProps = new Properties();
 
     public static ServiceFacade getInstance() {
         if (instance == null) {
