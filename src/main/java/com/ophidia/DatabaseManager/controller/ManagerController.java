@@ -3,6 +3,8 @@ package com.ophidia.DatabaseManager.controller;
 import com.ophidia.DatabaseManager.ServiceFacade;
 import com.ophidia.DatabaseManager.dto.ConnectionParameterDto;
 import com.ophidia.DatabaseManager.service.ManagerService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/db")
 public class ManagerController {
+    private final Logger logger = LogManager.getLogger(ManagerController.class);
+
 
 
     private ManagerService managerService;
@@ -22,6 +26,8 @@ public class ManagerController {
 
     @PostMapping("/connect")
     public void connect(@RequestBody ConnectionParameterDto connectionParamterDto) throws SQLException {
+        logger.info("Connecting to the database");
+        System.out.println("Connecting to the databasee");
         managerService.connect(connectionParamterDto);
     }
 
